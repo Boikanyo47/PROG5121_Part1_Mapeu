@@ -36,6 +36,7 @@ public class Login {
      * @param password the password to check
      * @return true if valid, false otherwise
      */
+    //Password must be 8+ chars, contain a capital letter, number, and special character
     public boolean checkPasswordComplexity(String password) {
         if (password.length() < 8) {
             return false;
