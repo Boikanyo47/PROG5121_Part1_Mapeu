@@ -64,6 +64,8 @@ public class Login {
      * @param cellNumber the phone number to check
      * @return true if valid, false otherwise
      */
+    // Regex reference: https://www.baeldung.com/java-regex-validate-phone-numbers
+    // Requires: '+' followed by 10-14 digits
     public boolean checkCellPhoneNumber(String cellNumber) {
         // Reference: regex pattern for international phone numbers
         return cellNumber.matches("^\\+[0-9]{10,14}$");
