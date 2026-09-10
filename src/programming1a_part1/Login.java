@@ -125,6 +125,7 @@ public class Login {
      * @param password entered password
      * @return true if credentials match, false otherwise
      */
+    //Checks stored username and password against entered credentials
     public boolean loginUser(String username, String password) {
         // Check if any user is registered
         if (storedUsername == null) {
