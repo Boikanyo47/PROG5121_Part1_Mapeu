@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
  *
  * @author Student
  */
-
+//All 13 unit tests for Login class - all passing
 public class LoginTestt {
 
     // Helper method to register a user with valid data
