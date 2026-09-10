@@ -108,6 +108,7 @@ public class Login {
      * @param username the username to check
      * @return true if username exists, false otherwise
      */
+    //Username must contain an underscore and be no more than 5 characters
     public boolean checkUsernameExists(String username) {
         if (storedUsername == null) {
             return false;
