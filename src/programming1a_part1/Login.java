@@ -1,6 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+/**
+ * Login class handling user registration, credential validation,
+ * and login authentication for the QuickChat application.
+ * @author Boikanyo
  */
 package programming1a_part1;
 
@@ -93,7 +94,7 @@ public class Login {
         
         // Check cell phone format
         if (!checkCellPhoneNumber(cellPhone)) {
-            return "Cell phone number incorrectly formatted or does not contain international code.";
+           return "Cell number is incorrectly formatted or does not contain an international code; please correct the number and try again.";
         }
         
         // All validations passed - store details
@@ -103,7 +104,7 @@ public class Login {
         this.storedLastName = lastName;
         this.storedCellPhone = cellPhone;
         
-        return "User registered successfully.";
+        return "Username successfully captured.";
     }
 
     /**
@@ -156,7 +157,7 @@ public class Login {
      * @return welcome message with user's first and last name
      */
     public String getWelcomeMessage() {
-        return "Welcome " + storedFirstName + " " + storedLastName + ", it is great to see you again.";
+        return "Welcome " + storedFirstName + ", " + storedLastName + " it is great to see you again.";
     }
 
     /**
@@ -167,7 +168,7 @@ public class Login {
      */
     public String returnLoginStatus(String username, String password) {
         if (loginUser(username, password)) {
-            return "Welcome " + storedFirstName + " " + storedLastName + ", it is great to see you again.";
+            return "Welcome " + storedFirstName + ", " + storedLastName + " it is great to see you again.";
         } else {
             return "Username or password incorrect, please try again.";
         }

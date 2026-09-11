@@ -17,7 +17,7 @@ public class LoginTestt {
     // Helper method to register a user with valid data
     private Login registerValidUser() {
         Login login = new Login();
-        String regMsg = login.registerUser("kyl_1", "Ch&sec@ke99!", "Naledi", "Mokoena", "+27838968976");
+        String regMsg = login.registerUser("kyl_1", "Ch&&sec@ke99!", "Naledi", "Mokoena", "+27838968976");
         assertEquals("User registered successfully.", regMsg);
         return login;
     }
@@ -41,7 +41,7 @@ public class LoginTestt {
     @Test
     public void testCheckPasswordComplexityValid() {
         Login login = new Login();
-        assertTrue(login.checkPasswordComplexity("Ch&sec@ke99!"));
+        assertTrue(login.checkPasswordComplexity("Ch&&sec@ke99!"));
     }
 
     @Test
@@ -71,7 +71,7 @@ public class LoginTestt {
     @Test
     public void testRegisterUserUsernameInvalid() {
         Login login = new Login();
-        String msg = login.registerUser("kyle!!!!!!", "Ch&sec@ke99!", "Naledi", "Mokoena", "+27838968976");
+        String msg = login.registerUser("kyle!!!!!!", "Ch&&sec@ke99!", "Naledi", "Mokoena", "+27838968976");
         assertEquals("Username is not correctly formatted; please ensure that your username contains an underscore and is no more than five characters in length.", msg);
     }
 
@@ -85,21 +85,21 @@ public class LoginTestt {
     @Test
     public void testRegisterUserCellInvalid() {
         Login login = new Login();
-        String msg = login.registerUser("kyl_1", "Ch&sec@ke99!", "Naledi", "Mokoena", "08966553");
-        assertEquals("Cell phone number incorrectly formatted or does not contain international code.", msg);
+        String msg = login.registerUser("kyl_1", "Ch&&sec@ke99!", "Naledi", "Mokoena", "08966553");
+        assertEquals("Cell number is incorrectly formatted or does not contain an international code; please correct the number and try again.", msg);
     }
 
     // ---- Test loginUser() ----
     @Test
     public void testLoginSuccessful() {
         Login login = registerValidUser();
-        assertTrue(login.loginUser("kyl_1", "Ch&sec@ke99!"));
+        assertTrue(login.loginUser("kyl_1", "Ch&&sec@ke99!"));
     }
 
     @Test
     public void testLoginFailedWrongUsername() {
         Login login = registerValidUser();
-        assertFalse(login.loginUser("wrong", "Ch&sec@ke99!"));
+        assertFalse(login.loginUser("wrong", "Ch&&sec@ke99!"));
     }
 
     @Test
@@ -112,8 +112,8 @@ public class LoginTestt {
     @Test
     public void testLoginStatusSuccess() {
         Login login = registerValidUser();
-        String status = login.returnLoginStatus("kyl_1", "Ch&sec@ke99!");
-        assertEquals("Welcome Naledi Mokoena, it is great to see you again.", status);
+        String status = login.returnLoginStatus("kyl_1", "Ch&&sec@ke99!");
+        assertEquals("Welcome Naledi, Mokoena it is great to see you again.", status);
     }
 
     @Test

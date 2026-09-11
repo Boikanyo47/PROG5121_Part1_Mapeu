@@ -1,6 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+/**
+ * Login class handling user registration, credential validation,
+ * and login authentication for the QuickChat application.
+ * @author Boikanyo
  */
 package programming1a_part1;
 import java.util.Scanner;
@@ -62,10 +63,10 @@ public class MainApp {
             cellPhone = sc.nextLine();
             
             if (login.checkCellPhoneNumber(cellPhone)) {
-                System.out.println("Cell phone number successfully added.");
+                System.out.println("Cell number successfully captured.");
                 validCell = true;
             } else {
-                System.out.println("Cell phone number incorrectly formatted or does not contain international code.");
+                System.out.println("Cell number is incorrectly formatted or does not contain an international code; please correct the number and try again.");
             }
         }
         
