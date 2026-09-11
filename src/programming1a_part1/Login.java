@@ -5,10 +5,6 @@
  */
 package programming1a_part1;
 
-/**
- *
- * @author Student
- */
 public class Login {
 
     // Stored user details after successful registration
@@ -37,7 +33,6 @@ public class Login {
      * @param password the password to check
      * @return true if valid, false otherwise
      */
-    //Password must be 8+ chars, contain a capital letter, number, and special character
     public boolean checkPasswordComplexity(String password) {
         if (password.length() < 8) {
             return false;
@@ -45,7 +40,7 @@ public class Login {
         boolean hasCapital = false;
         boolean hasNumber = false;
         boolean hasSpecial = false;
-        
+
         for (char c : password.toCharArray()) {
             if (Character.isUpperCase(c)) {
                 hasCapital = true;
@@ -61,19 +56,19 @@ public class Login {
     /**
      * Validates cell phone number using regex.
      * Requires: starts with '+', followed by digits only, total length 10-14 digits after '+'.
-     * Reference: regex adapted from common international phone patterns.
+     * Reference: regex adapted from common international phone number patterns.
+     * See: https://www.baeldung.com/java-regex-validate-phone-numbers
      * @param cellNumber the phone number to check
      * @return true if valid, false otherwise
      */
-    // Regex reference: https://www.baeldung.com/java-regex-validate-phone-numbers
-    // Requires: '+' followed by 10-14 digits
     public boolean checkCellPhoneNumber(String cellNumber) {
-        // Reference: regex pattern for international phone numbers
         return cellNumber.matches("^\\+[0-9]{10,14}$");
     }
 
     /**
-     * Registers a new user. Performs all validations.
+     * Registers a new user. Performs all validations in order: username,
+     * password, then cell phone. Stores the user's details once all three
+     * checks pass.
      * @param username   entered username
      * @param password   entered password
      * @param firstName  user's first name
@@ -86,24 +81,24 @@ public class Login {
         if (!checkUserName(username)) {
             return "Username is not correctly formatted; please ensure that your username contains an underscore and is no more than five characters in length.";
         }
-        
+
         // Check password complexity
         if (!checkPasswordComplexity(password)) {
             return "Password is not correctly formatted; please ensure that the password contains at least eight characters, a capital letter, a number, and a special character.";
         }
-        
+
         // Check cell phone format
         if (!checkCellPhoneNumber(cellPhone)) {
-           return "Cell number is incorrectly formatted or does not contain an international code; please correct the number and try again.";
+            return "Cell number is incorrectly formatted or does not contain an international code; please correct the number and try again.";
         }
-        
+
         // All validations passed - store details
         this.storedUsername = username;
         this.storedPassword = password;
         this.storedFirstName = firstName;
         this.storedLastName = lastName;
         this.storedCellPhone = cellPhone;
-        
+
         return "Username successfully captured.";
     }
 
@@ -112,7 +107,6 @@ public class Login {
      * @param username the username to check
      * @return true if username exists, false otherwise
      */
-    //Username must contain an underscore and be no more than 5 characters
     public boolean checkUsernameExists(String username) {
         if (storedUsername == null) {
             return false;
@@ -126,26 +120,25 @@ public class Login {
      * @param password entered password
      * @return true if credentials match, false otherwise
      */
-    //Checks stored username and password against entered credentials
     public boolean loginUser(String username, String password) {
         // Check if any user is registered
         if (storedUsername == null) {
             lastError = "Username or password incorrect, please try again.";
             return false;
         }
-        
+
         // Check if username exists
         if (!storedUsername.equals(username)) {
             lastError = "Username or password incorrect, please try again.";
             return false;
         }
-        
+
         // Check if password matches
         if (!storedPassword.equals(password)) {
             lastError = "Username or password incorrect, please try again.";
             return false;
         }
-        
+
         // Login successful - clear error
         lastError = null;
         return true;
@@ -153,7 +146,7 @@ public class Login {
 
     /**
      * Returns the welcome message after successful login.
-     * Format: "Welcome <first name> <last name>, it is great to see you again."
+     * Format: "Welcome <first name>, <last name> it is great to see you again."
      * @return welcome message with user's first and last name
      */
     public String getWelcomeMessage() {
@@ -173,7 +166,7 @@ public class Login {
             return "Username or password incorrect, please try again.";
         }
     }
-    
+
     /**
      * Gets the last error message from login attempt.
      * @return the last error message
@@ -181,20 +174,20 @@ public class Login {
     public String getLastError() {
         return lastError;
     }
-    
+
     // Getter methods for stored user details
     public String getStoredUsername() {
         return storedUsername;
     }
-    
+
     public String getStoredFirstName() {
         return storedFirstName;
     }
-    
+
     public String getStoredLastName() {
         return storedLastName;
     }
-    
+
     public String getStoredCellPhone() {
         return storedCellPhone;
     }

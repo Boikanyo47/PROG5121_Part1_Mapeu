@@ -1,37 +1,33 @@
 /**
- * Login class handling user registration, credential validation,
- * and login authentication for the QuickChat application.
+ * Console entry point for the QuickChat registration and login flow.
  * @author Boikanyo
  */
 package programming1a_part1;
 import java.util.Scanner;
-/**
- *
- * @author Student
- */
+
 public class MainApp {
 
     public static void main(String[] args) {
         Login login = new Login();
         Scanner sc = new Scanner(System.in);
-        
+
         System.out.println("=== Registration ===\n");
-        
+
         // Get first name
         System.out.print("Enter first name: ");
         String firstName = sc.nextLine();
-        
+
         // Get last name
         System.out.print("Enter last name: ");
         String lastName = sc.nextLine();
-        
+
         // Get username - keep asking until correct
         String username = "";
         boolean validUsername = false;
         while (!validUsername) {
             System.out.print("Enter username: ");
             username = sc.nextLine();
-            
+
             if (login.checkUserName(username)) {
                 System.out.println("Username successfully captured.");
                 validUsername = true;
@@ -39,14 +35,14 @@ public class MainApp {
                 System.out.println("Username is not correctly formatted; please ensure that your username contains an underscore and is no more than five characters in length.");
             }
         }
-        
+
         // Get password - keep asking until correct
         String password = "";
         boolean validPassword = false;
         while (!validPassword) {
             System.out.print("Enter password: ");
             password = sc.nextLine();
-            
+
             if (login.checkPasswordComplexity(password)) {
                 System.out.println("Password successfully captured.");
                 validPassword = true;
@@ -54,14 +50,14 @@ public class MainApp {
                 System.out.println("Password is not correctly formatted; please ensure that the password contains at least eight characters, a capital letter, a number, and a special character.");
             }
         }
-        
+
         // Get cell phone - keep asking until correct
         String cellPhone = "";
         boolean validCell = false;
         while (!validCell) {
             System.out.print("Enter cell phone number (e.g., +27838968976): ");
             cellPhone = sc.nextLine();
-            
+
             if (login.checkCellPhoneNumber(cellPhone)) {
                 System.out.println("Cell number successfully captured.");
                 validCell = true;
@@ -69,31 +65,31 @@ public class MainApp {
                 System.out.println("Cell number is incorrectly formatted or does not contain an international code; please correct the number and try again.");
             }
         }
-        
+
         // Register the user
         String regMsg = login.registerUser(username, password, firstName, lastName, cellPhone);
         System.out.println("\n" + regMsg);
-        
+
         // Login section - CHECK USERNAME FIRST
         System.out.println("\n=== Login ===");
-        
+
         boolean loggedIn = false;
         while (!loggedIn) {
             // Step 1: Ask for username
             System.out.print("Enter username: ");
             String loginUsername = sc.nextLine();
-            
+
             // Step 2: Check if username exists
             if (!login.checkUsernameExists(loginUsername)) {
                 System.out.println("Username not found. Please check your username.");
                 System.out.println("Please try again.\n");
                 continue; // Go back to start of loop - ask for username again
             }
-            
+
             // Step 3: Username is correct - now ask for password
             System.out.print("Enter password: ");
             String loginPassword = sc.nextLine();
-            
+
             // Step 4: Check if password matches
             if (login.loginUser(loginUsername, loginPassword)) {
                 // Login successful - display welcome message
@@ -106,7 +102,7 @@ public class MainApp {
                 System.out.println("Please try again.\n");
             }
         }
-        
+
         sc.close();
     }
 }

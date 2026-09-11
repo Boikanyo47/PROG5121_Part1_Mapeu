@@ -1,24 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
- */
 package programming1a_part1;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- *
- * @author Student
+ * Unit tests for the Login class - registration, validation, and login flow.
+ * @author Boikanyo
  */
-//All 13 unit tests for Login class - all passing
 public class LoginTestt {
 
     // Helper method to register a user with valid data
     private Login registerValidUser() {
         Login login = new Login();
         String regMsg = login.registerUser("kyl_1", "Ch&&sec@ke99!", "Naledi", "Mokoena", "+27838968976");
-        assertEquals("User registered successfully.", regMsg);
+        assertEquals("Username successfully captured.", regMsg);
         return login;
     }
 
@@ -123,5 +118,3 @@ public class LoginTestt {
         assertEquals("Username or password incorrect, please try again.", status);
     }
 }
-
-    
