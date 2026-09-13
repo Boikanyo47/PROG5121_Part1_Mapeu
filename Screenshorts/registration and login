@@ -1,0 +1,31 @@
+run:
+=== Registration ===
+
+Enter first name: Mapey
+Enter last name: Boikanyo
+Enter username: Liiii
+Username is not correctly formatted; please ensure that your username contains an underscore and is no more than five characters in length.
+Enter username: Lil_y
+Username successfully captured.
+Enter password: mkn k
+Password is not correctly formatted; please ensure that the password contains at least eight characters, a capital letter, a number, and a special character.
+Enter password: Boika!12
+Password successfully captured.
+Enter cell phone number (e.g., +27838968976): @#$%^
+Cell number is incorrectly formatted or does not contain an international code; please correct the number and try again.
+Enter cell phone number (e.g., +27838968976): +2712345678
+Cell number successfully captured.
+
+Username successfully captured.
+
+=== Login ===
+Enter username: ,,
+Username not found. Please check your username.
+Please try again.
+
+Enter username: Lil_y
+Enter password: Boika!12
+
+Welcome Mapey, Boikanyo it is great to see you again.
+Welcome to QuickChat! You are now logged in.
+BUILD SUCCESSFUL (total time: 1 minute 36 seconds)

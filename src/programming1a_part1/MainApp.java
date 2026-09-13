@@ -81,7 +81,7 @@ public class MainApp {
 
             // Step 2: Check if username exists
             if (!login.checkUsernameExists(loginUsername)) {
-                System.out.println("Username not found. Please check your username.");
+                System.out.println("Username or password incorrect, Please try again.");
                 System.out.println("Please try again.\n");
                 continue; // Go back to start of loop - ask for username again
             }
@@ -98,7 +98,7 @@ public class MainApp {
                 loggedIn = true;
             } else {
                 // Password is incorrect
-                System.out.println("Incorrect password. Please try again.");
+                System.out.println("Username or password incorrect, Please try again.");
                 System.out.println("Please try again.\n");
             }
         }
